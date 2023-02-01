@@ -3,6 +3,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     Vector3 BulletStartPosition;
+    public int BulletDamage;
     public Rigidbody2D RB;
 
     void Start()
