@@ -905,6 +905,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9667e20f31825164b8712f588c286a54, type: 3}
+--- !u!1 &586510656871071319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 586510657424714735, guid: 9667e20f31825164b8712f588c286a54, type: 3}
+  m_PrefabInstance: {fileID: 586510656871071318}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &586510656871071320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586510656871071319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57253e0b7d1ad1f4a88558be753c9e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bullet: {fileID: 1000013859261080, guid: 3c4af7568e42bc24cbf0b99795727093, type: 3}
+  BulletsPerClip: 10
+  BulletSpawnPos: {fileID: 2016485390}
+  ReloadTime: 1
+  FireRate: 0.3
+  BulletSpeed: 75
 --- !u!1001 &1518731130817733804
 PrefabInstance:
   m_ObjectHideFlags: 0

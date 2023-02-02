@@ -19,11 +19,14 @@ public class BombController : MonoBehaviour
     }
     public void launchGrenade()
     {
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        rb.simulated = true;
-        rb.AddForce(Vector3.up * 400);
-        rb.AddForce(Vector3.right * 400);
-        StartCoroutine("TakeGrenadeBack");
+        if(gameObject.GetComponent<SpriteRenderer>().enabled == false)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            rb.simulated = true;
+            rb.AddForce(Vector3.up * 400);
+            rb.AddForce(Vector3.right * 400);
+            StartCoroutine("TakeGrenadeBack");
+        }
     }
     IEnumerator TakeGrenadeBack()
     {
