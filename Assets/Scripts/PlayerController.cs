@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public GameObject Gun;
+    public int PlayerHealth;
+    public Slider healthSlider;
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateHealth();
     }
 
     // Update is called once per frame
@@ -34,6 +37,23 @@ public class PlayerController : MonoBehaviour
                 rotation = Quaternion.AngleAxis(angle - 0, Vector3.forward); //Vector 3. forward is z axis
                 Gun.transform.rotation = rotation;
             }
+        }
+    }
+    public void ShootAnimation()
+    {
+        StartCoroutine(ReturnAnimation());
+    }
+    IEnumerator ReturnAnimation()
+    {
+        Gun.transform.localPosition = new Vector3(-0.27f, 0.135f, 0);
+        yield return new WaitForSeconds(0.05f);
+        Gun.transform.localPosition = new Vector3(-0.25f, 0.135f, 0);
+    }
+    public void UpdateHealth()
+    {
+        if(PlayerHealth >= 0)
+        {
+            healthSlider.value = PlayerHealth;
         }
     }
 }
