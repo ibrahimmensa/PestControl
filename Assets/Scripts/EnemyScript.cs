@@ -15,16 +15,24 @@ public class EnemyScript : MonoBehaviour
     public float HealthBarMax;
 
     float EnemyResetHealth;
-    TempPlayerScript PlayerScript; //Rename this type to match the player script we will use.........................
+    PlayerController PlayerScript; //Rename this type to match the player script we will use.........................
 
     // Start is called before the first frame update
     void Start()
     {
         //HealthBarMax = HealthBar.rectTransform.rect.width;
-        Player = GameObject.FindGameObjectWithTag("Player");
+        if(gameObject.tag == "EnemyPest")
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
+            PlayerScript = Player.GetComponent<PlayerController>();
+        }
+        else if(gameObject.tag == "PlayerPest")
+        {
+            Player = GameObject.FindGameObjectWithTag("PlayerEnemy");
+        }
         EnemyResetHealth = EnemyHealth;
         //This is getting a reference to the player script.
-        PlayerScript = Player.GetComponent<TempPlayerScript>(); //Rename the component we are getting to match the player script we will use.........................
+         //Rename the component we are getting to match the player script we will use.........................
     }
 
     // Update is called once per frame
@@ -53,10 +61,13 @@ public class EnemyScript : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Bullet"))
         {
-            //Getting the damage amount from the bullet that hits the enemy.
-            BulletScript bulletscript = col.gameObject.GetComponent<BulletScript>();
-            EnemyHealth -= bulletscript.BulletDamage;
-            UpdateHealthBar();
+            if(gameObject.tag == "EnemyPest")
+            {
+                //Getting the damage amount from the bullet that hits the enemy.
+                BulletScript bulletscript = col.gameObject.GetComponent<BulletScript>();
+                EnemyHealth -= bulletscript.BulletDamage;
+                UpdateHealthBar();
+            }
         }
     }
 
@@ -64,6 +75,7 @@ public class EnemyScript : MonoBehaviour
     {
         //This is applying damage to the player through the player script reference.
         PlayerScript.PlayerHealth -= AttackDamage; //Rename the variable health to whatever the health vairable is in the player script we will use.........................
+        PlayerScript.UpdateHealth();
     }
 
     void UpdateHealthBar()

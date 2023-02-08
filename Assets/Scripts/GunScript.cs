@@ -85,6 +85,7 @@ public class GunScript : MonoBehaviour
     }
     IEnumerator FireReady()
     {
+        gameObject.GetComponentInParent<PlayerController>().ShootAnimation();
         ReadyToFire = false;
         yield return new WaitForSeconds(FireRate);
         ReadyToFire = true;
