@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject Gun;
+    public GameObject ArmPivot;
     public int PlayerHealth;
     public Slider healthSlider;
+    public List<GameObject> Guns, Grenades;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +20,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Gun.transform.position;
+        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - ArmPivot.transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //this is the angle that the weapon must rotate around to face the cursor
         angle = Mathf.Clamp(angle, -30, 30);
         Quaternion rotation = Quaternion.AngleAxis(angle - 0, Vector3.forward); //Vector 3. forward is z axis
-        Gun.transform.rotation = rotation;
+        ArmPivot.transform.rotation = rotation;
 
         //Touch Input
         if(Input.touchCount > 0)
@@ -31,11 +32,11 @@ public class PlayerController : MonoBehaviour
             Touch TouchInputPos = Input.GetTouch(0);
             if (!EventSystem.current.IsPointerOverGameObject(0))
             {
-                Vector2 directionTouch = Camera.main.ScreenToWorldPoint(new Vector3(TouchInputPos.position.x, TouchInputPos.position.y,Camera.main.nearClipPlane)) - Gun.transform.position;
+                Vector2 directionTouch = Camera.main.ScreenToWorldPoint(new Vector3(TouchInputPos.position.x, TouchInputPos.position.y,Camera.main.nearClipPlane)) - ArmPivot.transform.position;
                 angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; //this is the angle that the weapon must rotate around to face the cursor
                 angle = Mathf.Clamp(angle, -30, 30);
                 rotation = Quaternion.AngleAxis(angle - 0, Vector3.forward); //Vector 3. forward is z axis
-                Gun.transform.rotation = rotation;
+                ArmPivot.transform.rotation = rotation;
             }
         }
     }
@@ -45,9 +46,9 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator ReturnAnimation()
     {
-        Gun.transform.localPosition = new Vector3(-0.27f, 0.135f, 0);
+        ArmPivot.transform.localPosition = new Vector3(-0.27f, 0.135f, 0);
         yield return new WaitForSeconds(0.05f);
-        Gun.transform.localPosition = new Vector3(-0.25f, 0.135f, 0);
+        ArmPivot.transform.localPosition = new Vector3(-0.25f, 0.135f, 0);
     }
     public void UpdateHealth()
     {
