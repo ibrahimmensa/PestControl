@@ -14,6 +14,9 @@ public class EnemyScript : MonoBehaviour
     public Image HealthBar;
     public float HealthBarMax;
 
+    GameObject[] AttackDots;
+    GameObject Target;
+
     float EnemyResetHealth;
     PlayerController PlayerScript; //Rename this type to match the player script we will use.........................
 
@@ -23,12 +26,40 @@ public class EnemyScript : MonoBehaviour
         //HealthBarMax = HealthBar.rectTransform.rect.width;
         if(gameObject.tag == "EnemyPest")
         {
+            //This will get all the player positions in an array
+            AttackDots = GameObject.FindGameObjectsWithTag("PlayerPositions");
             Player = GameObject.FindGameObjectWithTag("Player");
             PlayerScript = Player.GetComponent<PlayerController>();
+            //this for loop will find the closest point to the enemy's pest
+            for(int i = 0; i < AttackDots.Length; i++)
+            {
+                if (Target == null)
+                {
+                    Target = AttackDots[i];
+                }
+                else if(Vector2.Distance(transform.position, Target.transform.position) > Vector2.Distance(transform.position, AttackDots[i].transform.position))
+                {
+                    Target = AttackDots[i];
+                }
+            }
         }
         else if(gameObject.tag == "PlayerPest")
         {
+            //This gets all the enemy positions in an array
+            AttackDots = GameObject.FindGameObjectsWithTag("EnemyPositions");
             Player = GameObject.FindGameObjectWithTag("PlayerEnemy");
+            //this for loop will find the closest point to the player's pest
+            for (int i = 0; i < AttackDots.Length; i++)
+            {
+                if (Target == null)
+                {
+                    Target = AttackDots[i];
+                }
+                else if (Vector2.Distance(transform.position, Target.transform.position) > Vector2.Distance(transform.position, AttackDots[i].transform.position))
+                {
+                    Target = AttackDots[i];
+                }
+            }
         }
         EnemyResetHealth = EnemyHealth;
         //This is getting a reference to the player script.
@@ -37,11 +68,11 @@ public class EnemyScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   //Checks if there is still distance between enemy and player.
-        if (Vector2.Distance(transform.position, Player.transform.position) > AttackDistance)
+    {   //Checks if there is still distance between enemy and closest attack point.
+        if (Vector2.Distance(transform.position, Target.transform.position) > AttackDistance)
         {
-            //Moves the enemy to the player.
-            transform.position = Vector2.MoveTowards(transform.position, Player.transform.position, MoveSpeed * Time.deltaTime);
+            //Moves the enemy to the closest attack point.
+            transform.position = Vector2.MoveTowards(transform.position, Target.transform.position, MoveSpeed * Time.deltaTime);
         }
         else
         {

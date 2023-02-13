@@ -8,6 +8,8 @@ TagManager:
   - PlayerEnemy
   - PlayerPest
   - EnemyPest
+  - PlayerPositions
+  - EnemyPositions
   layers:
   - Default
   - TransparentFX
