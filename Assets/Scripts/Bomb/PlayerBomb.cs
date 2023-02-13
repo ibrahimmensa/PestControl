@@ -36,6 +36,6 @@ public class PlayerBomb : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         rb.simulated = false;
         rb.velocity = Vector3.zero;
-        transform.localPosition =  Vector3.zero;
+        transform.localPosition = Vector3.zero;
     }
 }
