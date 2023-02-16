@@ -16,8 +16,19 @@ public class PlayerBombController : MonoBehaviour
     {
         
     }
-    public void SpawnBomb()
+    public void SpawnBomb(int i)
     {
-        Bomb.GetComponent<PlayerBomb>().launchGrenade();
+        switch(i)
+        {
+            case 1:
+                Bomb.GetComponent<PlayerBomb>().launchGrenade1();
+                break;
+            case 2:
+                Bomb.GetComponent<PlayerBomb>().launchGrenade2();
+                break;
+            case 3:
+                Bomb.GetComponent<PlayerBomb>().launchGrenade3();
+                break;
+        }
     }
 }
