@@ -13,7 +13,6 @@ public class EnemyScript : MonoBehaviour
     public float EnemyHealth;
     public Image HealthBar;
     public float HealthBarMax;
-    GameObject AI;
 
     GameObject[] AttackDots;
     GameObject Target;
@@ -61,11 +60,6 @@ public class EnemyScript : MonoBehaviour
                     Target = AttackDots[i];
                 }
             }
-            if (GameObject.FindGameObjectWithTag("AI"))
-            {
-                AI = GameObject.FindGameObjectWithTag("AI");
-                AI.GetComponent<AIBehavior>().AddEnemies(gameObject);
-            }
         }
         EnemyResetHealth = EnemyHealth;
         //This is getting a reference to the player script.
@@ -88,8 +82,7 @@ public class EnemyScript : MonoBehaviour
         
         if (EnemyHealth <= 0)
         {
-            gameObject.SetActive(false);
-            AI.GetComponent<AIBehavior>().RemoveEnemies(gameObject);
+            gameObject.SetActive(false);      
             EnemyHealth = EnemyResetHealth; //Resetting the enemy HP to full HP so it can be used again in a pool.
             UpdateHealthBar();
         }

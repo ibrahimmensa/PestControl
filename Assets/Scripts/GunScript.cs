@@ -11,7 +11,6 @@ public class GunScript : MonoBehaviour
     public float ReloadTime;
     public float FireRate;
     public float BulletSpeed;
-    Vector3 BulletDirection;
 
     bool ReadyToFire;
     bool Reloading;
@@ -23,15 +22,7 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.CompareTag("Player"))
-        {
-            BulletDirection = transform.right;
-        }
-        else
-        {
-            BulletDirection = transform.right;
-        }
-
+        
         BulletsInClip = BulletsPerClip;
         for (int i = 0; i < BulletsPerClip; i++)
         {
@@ -57,7 +48,6 @@ public class GunScript : MonoBehaviour
             //Play VFX
             //Play SFX
             BulletPool[BulletsInClip - 1].transform.position = BulletSpawnPos.transform.position;
-            BulletPool[BulletsInClip - 1].transform.rotation = transform.rotation;
             BulletPool[BulletsInClip - 1].SetActive(true);
             BulletRigidBodyPool[BulletsInClip - 1].AddForce(transform.right * BulletSpeed);
             BulletsInClip--;

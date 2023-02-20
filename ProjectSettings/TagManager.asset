@@ -10,7 +10,6 @@ TagManager:
   - EnemyPest
   - PlayerPositions
   - EnemyPositions
-  - AI
   layers:
   - Default
   - TransparentFX
