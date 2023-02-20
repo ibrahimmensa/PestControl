@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class GunScript : MonoBehaviour
+public class AIGun : MonoBehaviour
 {
     public GameObject Bullet;
     public int BulletsPerClip;
@@ -11,7 +10,6 @@ public class GunScript : MonoBehaviour
     public float ReloadTime;
     public float FireRate;
     public float BulletSpeed;
-    Vector3 BulletDirection;
 
     bool ReadyToFire;
     bool Reloading;
@@ -19,23 +17,15 @@ public class GunScript : MonoBehaviour
 
     List<GameObject> BulletPool = new();
     List<Rigidbody2D> BulletRigidBodyPool = new();
+    public bool EnemiesAvailable;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.CompareTag("Player"))
-        {
-            BulletDirection = transform.right;
-        }
-        else
-        {
-            BulletDirection = transform.right;
-        }
-
         BulletsInClip = BulletsPerClip;
         for (int i = 0; i < BulletsPerClip; i++)
         {
-            GameObject TempBullet = Instantiate(Bullet, BulletSpawnPos.transform.position, Quaternion.identity);   
+            GameObject TempBullet = Instantiate(Bullet, BulletSpawnPos.transform.position, Quaternion.identity);
             BulletPool.Add(TempBullet);
             BulletRigidBodyPool.Add(TempBullet.GetComponent<Rigidbody2D>());
             TempBullet.SetActive(false);
@@ -52,33 +42,17 @@ public class GunScript : MonoBehaviour
             StartCoroutine(Reload());
         }
         //Mouse Controls
-        if (Input.GetMouseButton(0) && !Reloading && ReadyToFire && !EventSystem.current.IsPointerOverGameObject())
+        if (!Reloading && ReadyToFire && EnemiesAvailable)
         {
             //Play VFX
             //Play SFX
             BulletPool[BulletsInClip - 1].transform.position = BulletSpawnPos.transform.position;
             BulletPool[BulletsInClip - 1].transform.rotation = transform.rotation;
             BulletPool[BulletsInClip - 1].SetActive(true);
-            BulletRigidBodyPool[BulletsInClip - 1].AddForce(transform.right * BulletSpeed);
+            BulletRigidBodyPool[BulletsInClip - 1].AddForce(-transform.right * BulletSpeed);
             BulletsInClip--;
             //Set the direction of the bullet in the bullet script
             StartCoroutine(FireReady());
-        }
-
-        //Touch Controls
-        if(Input.touchCount > 0 && !Reloading && ReadyToFire)
-        {
-            if(!EventSystem.current.IsPointerOverGameObject(0))
-            {
-                //Play VFX
-                //Play SFX
-                BulletPool[BulletsInClip - 1].transform.position = BulletSpawnPos.transform.position;
-                BulletPool[BulletsInClip - 1].SetActive(true);
-                BulletRigidBodyPool[BulletsInClip - 1].AddForce(transform.right * BulletSpeed);
-                BulletsInClip--;
-                //Set the direction of the bullet in the bullet script
-                StartCoroutine(FireReady());
-            }
         }
     }
 
@@ -88,14 +62,10 @@ public class GunScript : MonoBehaviour
         yield return new WaitForSeconds(ReloadTime);
         BulletsInClip = BulletsPerClip;
         Reloading = false;
-        //foreach(Rigidbody2D RB in BulletRigidBodyPool)
-        //{
-        //    RB.velocity = Vector2.zero;
-        //}
     }
     IEnumerator FireReady()
     {
-        gameObject.GetComponentInParent<PlayerController>().ShootAnimation();
+        gameObject.GetComponentInParent<AIBehavior>().ShootAnimation();
         ReadyToFire = false;
         yield return new WaitForSeconds(FireRate);
         ReadyToFire = true;
