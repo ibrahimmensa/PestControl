@@ -299,9 +299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 1
   EnemyAnimator: {fileID: 2043590613723429776}
-  AttackDistance: 2
-  AttackDamage: 3
-  EnemyHealth: 30
+  AttackDistance: 0
+  AttackDamage: 1
+  EnemyHealth: 25
   HealthBar: {fileID: 662942704}
   HealthBarMax: 0
 --- !u!61 &1669797283

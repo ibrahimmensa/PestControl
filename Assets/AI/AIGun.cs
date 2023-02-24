@@ -10,6 +10,7 @@ public class AIGun : MonoBehaviour
     public float ReloadTime;
     public float FireRate;
     public float BulletSpeed;
+    public int BulletDamage;
 
     bool ReadyToFire;
     bool Reloading;
@@ -26,6 +27,8 @@ public class AIGun : MonoBehaviour
         for (int i = 0; i < BulletsPerClip; i++)
         {
             GameObject TempBullet = Instantiate(Bullet, BulletSpawnPos.transform.position, Quaternion.identity);
+            TempBullet.tag = "AIBullet";
+            TempBullet.GetComponent<BulletScript>().BulletDamage = BulletDamage;
             BulletPool.Add(TempBullet);
             BulletRigidBodyPool.Add(TempBullet.GetComponent<Rigidbody2D>());
             TempBullet.SetActive(false);

@@ -88,24 +88,33 @@ public class EnemyScript : MonoBehaviour
         
         if (EnemyHealth <= 0)
         {
-            gameObject.SetActive(false);
-            AI.GetComponent<AIBehavior>().RemoveEnemies(gameObject);
-            EnemyHealth = EnemyResetHealth; //Resetting the enemy HP to full HP so it can be used again in a pool.
-            UpdateHealthBar();
+            //gameObject.SetActive(false);
+            
+            //EnemyHealth = EnemyResetHealth; //Resetting the enemy HP to full HP so it can be used again in a pool.
+            //UpdateHealthBar();
+            if (gameObject.tag == "PlayerPest")
+            {
+                AI.GetComponent<AIBehavior>().RemoveEnemies(gameObject);
+            }
+            Destroy(gameObject);
         }
     }
     
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Bullet"))
+        if (col.gameObject.CompareTag("PlayerBullet") && gameObject.CompareTag("EnemyPest"))
         {
-            if(gameObject.tag == "EnemyPest")
-            {
+
                 //Getting the damage amount from the bullet that hits the enemy.
                 BulletScript bulletscript = col.gameObject.GetComponent<BulletScript>();
                 EnemyHealth -= bulletscript.BulletDamage;
                 UpdateHealthBar();
-            }
+        }
+        else if (col.gameObject.CompareTag("AIBullet") && gameObject.CompareTag("PlayerPest"))
+        {
+            BulletScript bulletscript = col.gameObject.GetComponent<BulletScript>();
+            EnemyHealth -= bulletscript.BulletDamage;
+            UpdateHealthBar();
         }
     }
 

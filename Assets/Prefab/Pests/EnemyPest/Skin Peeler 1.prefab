@@ -256,7 +256,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b23a98ce5b425364e85f5fbf72e158a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -299,9 +299,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 3
   EnemyAnimator: {fileID: 2043590613723429776}
-  AttackDistance: 2
+  AttackDistance: 0
   AttackDamage: 3
-  EnemyHealth: 30
+  EnemyHealth: 75
   HealthBar: {fileID: 662942704}
   HealthBarMax: 0
 --- !u!61 &1625628904330276822

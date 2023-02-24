@@ -8,44 +8,120 @@ public class AIBehavior : MonoBehaviour
     public GameObject ArmPivot;
     public int EnemyHealth;
     public Slider healthSlider;
-    public List<GameObject> Guns, Grenade;
+    public List<GameObject> Guns, Bombs;
     List<GameObject> Enemies = new();
     GameObject CurrentTarget;
-    int AILevel = 1;
+    public int AILevel;
     public float AimSpeed;
     GameObject Gun;
     public float Offset;
+    float OffsetUpper;
+    float OffsetLower;
 
     // Start is called before the first frame update
     void Start()
     {
+        foreach(GameObject gun in Guns)
+        {
+            gun.SetActive(false);
+        }
+        foreach(GameObject Bomb in Bombs)
+        {
+            Bomb.SetActive(false);
+        }
+        AILevel = PlayerPrefs.GetInt("PlayerLevel", AILevel);
         switch (AILevel)
         {
             case 1:
-                Guns[0].SetActive(true);
+                OffsetLower = 0;
+                OffsetUpper = 0;
                 Gun = Guns[0];
+                foreach(GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 2;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 5;
+                }
+                Bombs[0].SetActive(true);
                 break;
 
             case 2:
-                //Do something here for AI level 2
+                OffsetLower = 0;
+                OffsetUpper = 0;
+                Gun = Guns[1];
+                foreach (GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 1;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 5;
+                }
+                Bombs[1].SetActive(true);
                 break;
 
             case 3:
-                //Do something for AI level 3
+                Gun = Guns[1];
+                foreach (GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 1;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 4;
+                }
+                Bombs[0].SetActive(true);
+                Bombs[1].SetActive(true);
                 break;
 
             case 4:
-
+                Gun = Guns[2];
+                foreach (GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 1;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 4;
+                }
+                Bombs[2].SetActive(true);
                 break;
 
             case 5:
-
+                Gun = Guns[2];
+                foreach (GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 1;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 3;
+                }
+                Bombs[1].SetActive(true);
+                Bombs[2].SetActive(true);
                 break;
 
             case 6:
+                Gun = Guns[3];
+                foreach (GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 1;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 2;
+                }
+                Bombs[1].SetActive(true);
+                Bombs[2].SetActive(true);
+                break;
 
+            case 7:
+                Gun = Guns[3];
+                foreach (GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 0;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 1;
+                }
+                Bombs[2].SetActive(true);
+                Bombs[3].SetActive(true);
+                break;
+
+            case 8:
+                Gun = Guns[4];
+                foreach (GameObject Bomb in Bombs)
+                {
+                    Bomb.GetComponent<AIBomb>().BombDelayLower = 0;
+                    Bomb.GetComponent<AIBomb>().BombDelayUpper = 0;
+                }
+                Bombs[2].SetActive(true);
+                Bombs[3].SetActive(true);
                 break;
         }
+        Gun.SetActive(true);
     }
 
     // Update is called once per frame
@@ -53,10 +129,11 @@ public class AIBehavior : MonoBehaviour
     {
         if (CurrentTarget)
         {
+            Offset = Random.Range(OffsetLower, OffsetUpper);
             Vector2 direction = CurrentTarget.transform.position - ArmPivot.transform.position;
             direction.Normalize();
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion rotation = Quaternion.Euler(Vector3.forward * (angle + 180f));
+            Quaternion rotation = Quaternion.Euler(Vector3.forward * (angle + 180f + Offset));
             ArmPivot.transform.rotation = Quaternion.Slerp(ArmPivot.transform.rotation, rotation, AimSpeed * Time.deltaTime);
         }
     }
@@ -68,7 +145,7 @@ public class AIBehavior : MonoBehaviour
         {
             CurrentTarget = Enemies[0];
         }
-        Guns[0].GetComponent<AIGun>().EnemiesAvailable = true;
+        Gun.GetComponent<AIGun>().EnemiesAvailable = true;
     }
 
     public void RemoveEnemies(GameObject Enemy)
