@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class AIBehavior : MonoBehaviour
 {
     public GameObject ArmPivot;
-    public int EnemyHealth;
+    public int Health;
     public Slider healthSlider;
     public List<GameObject> Guns, Bombs;
     List<GameObject> Enemies = new();
@@ -182,5 +182,12 @@ public class AIBehavior : MonoBehaviour
         ArmPivot.transform.localPosition = new Vector3(0.193f, 0.03f, 0);
         yield return new WaitForSeconds(0.05f);
         ArmPivot.transform.localPosition = new Vector3(0.173f, 0.03f, 0);
+    }
+    public void UpdateHealth()
+    {
+        if (Health >= 0)
+        {
+            healthSlider.value = Health;
+        }
     }
 }

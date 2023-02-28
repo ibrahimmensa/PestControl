@@ -17,6 +17,7 @@ public class EnemyScript : MonoBehaviour
 
     GameObject[] AttackDots;
     GameObject Target;
+    AIBehavior AIScript;
 
     float EnemyResetHealth;
     PlayerController PlayerScript; //Rename this type to match the player script we will use.........................
@@ -64,7 +65,9 @@ public class EnemyScript : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("AI"))
             {
                 AI = GameObject.FindGameObjectWithTag("AI");
-                AI.GetComponent<AIBehavior>().AddEnemies(gameObject);
+                AIScript = AI.GetComponent<AIBehavior>();
+                AIScript.AddEnemies(gameObject);
+                //AI.GetComponent<AIBehavior>().AddEnemies(gameObject);
             }
         }
         EnemyResetHealth = EnemyHealth;
@@ -94,7 +97,8 @@ public class EnemyScript : MonoBehaviour
             //UpdateHealthBar();
             if (gameObject.tag == "PlayerPest")
             {
-                AI.GetComponent<AIBehavior>().RemoveEnemies(gameObject);
+                AIScript.RemoveEnemies(gameObject);
+                //AI.GetComponent<AIBehavior>().RemoveEnemies(gameObject);
             }
             Destroy(gameObject);
         }
@@ -120,9 +124,20 @@ public class EnemyScript : MonoBehaviour
 
     public void EnemyAttack()
     {
-        //This is applying damage to the player through the player script reference.
-        PlayerScript.PlayerHealth -= AttackDamage; //Rename the variable health to whatever the health vairable is in the player script we will use.........................
-        PlayerScript.UpdateHealth();
+        if(gameObject.CompareTag("EnemyPest"))
+        {
+            PlayerScript.PlayerHealth -= AttackDamage;
+            PlayerScript.UpdateHealth();
+        }
+        else if(AIScript)
+        {
+            AIScript.Health -= AttackDamage;
+            AIScript.UpdateHealth();
+        }
+        else
+        {
+            return;
+        }
     }
 
     void UpdateHealthBar()
