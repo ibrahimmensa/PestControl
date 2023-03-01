@@ -14,8 +14,8 @@ public class PlayerBombController : MonoBehaviour
     {
         SetReloadTimeIndex();
         Reloaded = true;
-        reloadTime = 3;//PlayerPrefs.GetInt(PlayerPrefs.GetString("SelectedBomb", "CuteButSavage") + "Time", 8);
-        CurrentBombIndex = 1;//PlayerPrefs.GetInt(PlayerPrefs.GetString("SelectedBomb", "CuteButSavage") + "Index", 0);
+        reloadTime = PlayerPrefs.GetInt(PlayerPrefs.GetString("SelectedBomb", "CuteButSavage") + "Time", 8);
+        CurrentBombIndex = PlayerPrefs.GetInt(PlayerPrefs.GetString("SelectedBomb", "CuteButSavage") + "Index", 0);
     }
 
     // Update is called once per frame

@@ -1239,10 +1239,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: RideOrDie
+  isGun: 0
   UnlockButtons:
   - {fileID: 410592248}
   - {fileID: 1820643566}
   OtherButtons: []
+  Use: {fileID: 0}
+  Equipped: {fileID: 0}
 --- !u!1 &58324014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,10 +1905,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Stinker
+  isGun: 0
   UnlockButtons:
   - {fileID: 1486455811}
   - {fileID: 1042721996}
   OtherButtons: []
+  Use: {fileID: 0}
+  Equipped: {fileID: 0}
 --- !u!1 &64133705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3492,7 +3498,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 124528613}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1011586056}
+        m_TargetAssemblyTypeName: InfoPanelDetails, Assembly-CSharp
+        m_MethodName: SelectGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &124528613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5671,7 +5689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Multiplayer
+  m_text: Classic
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12023,10 +12041,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: SlenderBomb
+  isGun: 0
   UnlockButtons:
   - {fileID: 1321427901}
   - {fileID: 495539848}
   OtherButtons: []
+  Use: {fileID: 0}
+  Equipped: {fileID: 0}
 --- !u!1 &433464951
 GameObject:
   m_ObjectHideFlags: 0
@@ -19028,11 +19049,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Gun03
+  isGun: 1
   UnlockButtons:
   - {fileID: 683994247}
   OtherButtons:
   - {fileID: 1447296065}
   - {fileID: 377620544}
+  - {fileID: 635330070}
+  - {fileID: 1835370980}
+  Use: {fileID: 635330070}
+  Equipped: {fileID: 1835370980}
 --- !u!1 &626227177
 GameObject:
   m_ObjectHideFlags: 0
@@ -19266,11 +19292,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Gun04
+  isGun: 1
   UnlockButtons:
   - {fileID: 405045082}
   OtherButtons:
   - {fileID: 1121356550}
   - {fileID: 1947826109}
+  - {fileID: 1134341374}
+  - {fileID: 1193633158}
+  Use: {fileID: 1134341374}
+  Equipped: {fileID: 1193633158}
 --- !u!1 &635330070
 GameObject:
   m_ObjectHideFlags: 0
@@ -19354,7 +19385,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 635330073}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 612776816}
+        m_TargetAssemblyTypeName: InfoPanelDetails, Assembly-CSharp
+        m_MethodName: SelectGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &635330073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27407,8 +27450,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: WoodenSlate
+  isGun: 0
   UnlockButtons: []
   OtherButtons: []
+  Use: {fileID: 0}
+  Equipped: {fileID: 0}
 --- !u!1 &974605713
 GameObject:
   m_ObjectHideFlags: 0
@@ -28237,11 +28283,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Gun02
+  isGun: 1
   UnlockButtons:
   - {fileID: 542070932}
   OtherButtons:
   - {fileID: 505834874}
   - {fileID: 1621449547}
+  - {fileID: 124528610}
+  - {fileID: 810383896}
+  Use: {fileID: 124528610}
+  Equipped: {fileID: 810383896}
 --- !u!1 &1014331644
 GameObject:
   m_ObjectHideFlags: 0
@@ -31383,7 +31434,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1134341377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 634766177}
+        m_TargetAssemblyTypeName: InfoPanelDetails, Assembly-CSharp
+        m_MethodName: SelectGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1134341377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31835,11 +31898,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Gun05
+  isGun: 1
   UnlockButtons:
   - {fileID: 1925015286}
   OtherButtons:
   - {fileID: 779864210}
   - {fileID: 1401003594}
+  - {fileID: 1228103966}
+  - {fileID: 2141000725}
+  Use: {fileID: 1228103966}
+  Equipped: {fileID: 2141000725}
 --- !u!1 &1150391331
 GameObject:
   m_ObjectHideFlags: 0
@@ -33715,7 +33783,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1228103969}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1147134827}
+        m_TargetAssemblyTypeName: InfoPanelDetails, Assembly-CSharp
+        m_MethodName: SelectGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1228103969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41458,6 +41538,7 @@ GameObject:
   - component: {fileID: 1476770959}
   - component: {fileID: 1476770961}
   - component: {fileID: 1476770960}
+  - component: {fileID: 1476770962}
   m_Layer: 5
   m_Name: Gun
   m_TagString: Untagged
@@ -41528,6 +41609,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476770958}
   m_CullTransparentMesh: 1
+--- !u!114 &1476770962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476770958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f0883085d3fad4a97b897ca6980c29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Gun01
+  isGun: 1
+  UnlockButtons: []
+  OtherButtons:
+  - {fileID: 1679919779}
+  - {fileID: 1186160535}
+  Use: {fileID: 1679919779}
+  Equipped: {fileID: 1186160535}
 --- !u!1 &1478825557
 GameObject:
   m_ObjectHideFlags: 0
@@ -42028,10 +42129,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: HolyWand
+  isGun: 0
   UnlockButtons:
   - {fileID: 790308670}
   - {fileID: 1321224982}
   OtherButtons: []
+  Use: {fileID: 0}
+  Equipped: {fileID: 0}
 --- !u!1 &1514953135
 GameObject:
   m_ObjectHideFlags: 0
@@ -43245,10 +43349,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: JokeOnYou
+  isGun: 0
   UnlockButtons:
   - {fileID: 1444034171}
   - {fileID: 1943445700}
   OtherButtons: []
+  Use: {fileID: 0}
+  Equipped: {fileID: 0}
 --- !u!1 &1559296023
 GameObject:
   m_ObjectHideFlags: 0
@@ -46856,7 +46963,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1679919782}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1476770962}
+        m_TargetAssemblyTypeName: InfoPanelDetails, Assembly-CSharp
+        m_MethodName: SelectGun
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1679919782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50237,10 +50356,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: SteelArmor
+  isGun: 0
   UnlockButtons:
   - {fileID: 1878752699}
   - {fileID: 1444151587}
   OtherButtons: []
+  Use: {fileID: 0}
+  Equipped: {fileID: 0}
 --- !u!1 &1785587425
 GameObject:
   m_ObjectHideFlags: 0
@@ -56030,6 +56152,12 @@ MonoBehaviour:
   GunPanel: {fileID: 408165333}
   GrenadePanel: {fileID: 528629194}
   ShieldPanel: {fileID: 235162782}
+  GunInfoPanels:
+  - {fileID: 1476770958}
+  - {fileID: 1011586052}
+  - {fileID: 612776812}
+  - {fileID: 634766173}
+  - {fileID: 1147134823}
 --- !u!114 &1981903657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57874,7 +58002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f30b83e50e34f5c4a992304fdfa8f040, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b1cf90739fbe8f479a0f9f20bf8670c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
