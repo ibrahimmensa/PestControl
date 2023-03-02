@@ -11,11 +11,15 @@ public class AIBomb : MonoBehaviour
     public int BombDelayUpper;
     public int BombDelayLower;
     int BombDelay;
+    public ParticleSystem Explosion;
+    public float ExplosionDelay;
+    public Vector3 ExplosionOffset;
     // Start is called before the first frame update
     void Start()
     {
         BombCoolDown = PlayerPrefs.GetInt(gameObject.name, 8);
         BombReady = true;
+        Explosion.transform.SetParent(null);
     }
 
     // Update is called once per frame
@@ -74,11 +78,14 @@ public class AIBomb : MonoBehaviour
         }
     }
     IEnumerator TakeGrenadeBack(float i, Vector3 pos)
-    {
+    { 
         yield return new WaitForSeconds(i);
+        Explosion.transform.position = transform.position + ExplosionOffset;
+        Explosion.Play();
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(ExplosionDelay);
         GameObject enemy = Instantiate(EnemyToInstantiate, Environment.transform);
         enemy.transform.localPosition = pos;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         rb.simulated = false;
         rb.velocity = Vector3.zero;
         transform.localPosition = Vector3.zero;

@@ -15,6 +15,8 @@ public class EnemyScript : MonoBehaviour
     public float HealthBarMax;
     GameObject AI;
 
+    public ParticleSystem Explosion;
+
     GameObject[] AttackDots;
     GameObject Target;
     AIBehavior AIScript;
@@ -25,6 +27,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponent<Renderer>().material.renderQueue = 10000;
         //HealthBarMax = HealthBar.rectTransform.rect.width;
         if(gameObject.tag == "EnemyPest")
         {

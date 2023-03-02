@@ -6,10 +6,17 @@ public class PlayerBomb : MonoBehaviour
 {
     public Rigidbody2D rb;
     public GameObject EnemyToInstantiate, Environment;
+    public ParticleSystem Explosion;
+    public float ExplosionDelay;
+    public Vector3 ExplosionOffset;
+    bool BombReady;
     // Start is called before the first frame update
+
+
     void Start()
     {
-        
+        Explosion.transform.SetParent(null);
+        BombReady = true;
     }
 
     // Update is called once per frame
@@ -19,7 +26,7 @@ public class PlayerBomb : MonoBehaviour
     }
     public void launchGrenade1()
     {
-        if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
+        if (gameObject.GetComponent<SpriteRenderer>().enabled == false && BombReady)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             rb.simulated = true;
@@ -30,7 +37,7 @@ public class PlayerBomb : MonoBehaviour
     }
     public void launchGrenade2()
     {
-        if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
+        if (gameObject.GetComponent<SpriteRenderer>().enabled == false && BombReady)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             rb.simulated = true;
@@ -41,7 +48,7 @@ public class PlayerBomb : MonoBehaviour
     }
     public void launchGrenade3()
     {
-        if (gameObject.GetComponent<SpriteRenderer>().enabled == false)
+        if (gameObject.GetComponent<SpriteRenderer>().enabled == false && BombReady)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             rb.simulated = true;
@@ -52,12 +59,19 @@ public class PlayerBomb : MonoBehaviour
     }
     IEnumerator TakeGrenadeBack(float i,Vector3 pos)
     {
+        BombReady = false;
+        //Explosion.transform.SetParent(transform);
         yield return new WaitForSeconds(i);
+        //Explosion.transform.SetParent(null);
+        Explosion.transform.position = transform.position + ExplosionOffset;
+        Explosion.Play();
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(ExplosionDelay);
         GameObject enemy = Instantiate(EnemyToInstantiate, Environment.transform);
         enemy.transform.localPosition = pos;
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
         rb.simulated = false;
         rb.velocity = Vector3.zero;
         transform.localPosition = Vector3.zero;
+        BombReady = true;
     }
 }

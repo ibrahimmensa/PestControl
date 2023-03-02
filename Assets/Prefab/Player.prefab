@@ -1618,6 +1618,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711597507037986883}
     m_Modifications:
+    - target: {fileID: 4474358661519411503, guid: 9455d631943851745bf802e573387f0b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474358662452597025, guid: 9455d631943851745bf802e573387f0b, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474358662452597030, guid: 9455d631943851745bf802e573387f0b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474358662452597030, guid: 9455d631943851745bf802e573387f0b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474358662452597030, guid: 9455d631943851745bf802e573387f0b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4474358662673880094, guid: 9455d631943851745bf802e573387f0b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6676567162981213565, guid: 9455d631943851745bf802e573387f0b, type: 3}
       propertyPath: m_Name
       value: bomb2
