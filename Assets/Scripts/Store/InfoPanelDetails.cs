@@ -5,7 +5,9 @@ using UnityEngine;
 public class InfoPanelDetails : MonoBehaviour
 {
     public string Name;
+    public bool isGun;
     public List<GameObject> UnlockButtons, OtherButtons;
+    public GameObject Use, Equipped;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,11 +45,38 @@ public class InfoPanelDetails : MonoBehaviour
                 }
             }
         }
+        CheckSelection();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+    public void SelectGun()
+    {
+        if (isGun)
+        {
+            PlayerPrefs.SetString("SelectedGun", Name);
+            Use.SetActive(false);
+            Equipped.SetActive(true);
+            InventoryTabsController.instance.SetEquippedGun();
+        }
+    }
+    public void CheckSelection()
+    {
+        if (isGun)
+        {
+            if (PlayerPrefs.GetString("SelectedGun") == Name)
+            {
+                Use.SetActive(false);
+                Equipped.SetActive(true);
+            }
+            else
+            {
+                Use.SetActive(true);
+                Equipped.SetActive(false);
+            }
+        }
     }
 }

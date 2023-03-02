@@ -7,9 +7,15 @@ public class InventoryTabsController : MonoBehaviour
     public GameObject GunsButton, GrenadeButton, ShieldButton;
     public GameObject GunsButtonSelected, GrenadeButtonSelected, ShieldButtonSelected;
     public GameObject GunPanel, GrenadePanel, ShieldPanel;
+    public List<GameObject> GunInfoPanels;
+    public static InventoryTabsController instance;
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
         ActivateGuns();
     }
 
@@ -56,5 +62,12 @@ public class InventoryTabsController : MonoBehaviour
         ShieldPanel.SetActive(true);
         ShieldButtonSelected.SetActive(true);
         ShieldButton.SetActive(false);
+    }
+    public void SetEquippedGun()
+    {
+        for (int i = 0; i < GunInfoPanels.Count; i++)
+        {
+            GunInfoPanels[i].GetComponent<InfoPanelDetails>().CheckSelection();
+        }
     }
 }

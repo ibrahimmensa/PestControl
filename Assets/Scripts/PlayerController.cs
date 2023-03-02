@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         UpdateHealth();
+        SetIndex();
+        Guns[PlayerPrefs.GetInt(PlayerPrefs.GetString("SelectedGun", "Gun01") + "Index", 0)].SetActive(true);
     }
 
     // Update is called once per frame
@@ -56,5 +58,13 @@ public class PlayerController : MonoBehaviour
         {
             healthSlider.value = PlayerHealth;
         }
+    }
+    public void SetIndex()
+    {
+        PlayerPrefs.SetInt("Gun01Index", 0);
+        PlayerPrefs.SetInt("Gun02Index", 1);
+        PlayerPrefs.SetInt("Gun03Index", 2);
+        PlayerPrefs.SetInt("Gun04Index", 3);
+        PlayerPrefs.SetInt("Gun05Index", 4);
     }
 }
