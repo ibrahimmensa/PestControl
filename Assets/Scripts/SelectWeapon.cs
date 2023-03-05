@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SelectWeapon : MonoBehaviour
 {
@@ -41,5 +42,35 @@ public class SelectWeapon : MonoBehaviour
     void Update()
     {
         
+    }
+    public void SelectGrenade(int i)
+    {
+        DisableSelectionG();
+        PlayerPrefs.SetString("SelectedBomb", Grenades[i]);
+        GrenadeButtons[i].transform.GetChild(0).transform.gameObject.SetActive(true);
+    }
+    public void SelectShield(int i)
+    {
+        DisableSelectionS();
+        PlayerPrefs.SetString("SelectedBomb", Shields[i]);
+        ShieldButtons[i].transform.GetChild(0).transform.gameObject.SetActive(true);
+    }
+    public void StartPlay()
+    {
+        SceneManager.LoadScene("TestScene");
+    }
+    public void DisableSelectionG()
+    {
+        for (int i = 0; i < GrenadeButtons.Count; i++)
+        {
+            GrenadeButtons[i].transform.GetChild(0).transform.gameObject.SetActive(false);
+        }
+    }
+    public void DisableSelectionS()
+    {
+        for (int i = 0; i < ShieldButtons.Count; i++)
+        {
+            ShieldButtons[i].transform.GetChild(0).transform.gameObject.SetActive(false);
+        }
     }
 }

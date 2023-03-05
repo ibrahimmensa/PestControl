@@ -189,5 +189,9 @@ public class AIBehavior : MonoBehaviour
         {
             healthSlider.value = Health;
         }
+        else if(Health <= 0)
+        {
+            GameplayController.instance.GameWin();
+        }
     }
 }

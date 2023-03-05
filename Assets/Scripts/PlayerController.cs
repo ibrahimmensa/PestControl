@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour
         {
             healthSlider.value = PlayerHealth;
         }
+        else if(PlayerHealth <= 0)
+        {
+            GameplayController.instance.GameLose();
+        }
     }
     public void SetIndex()
     {

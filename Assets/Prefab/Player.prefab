@@ -98,7 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a1d686643e0784a90e24f1974fb68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bomb: {fileID: 0}
+  Bomb:
+  - {fileID: 0}
   Buttons: {fileID: 0}
 --- !u!50 &608514243
 Rigidbody2D:
@@ -509,7 +510,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a1d686643e0784a90e24f1974fb68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bomb: {fileID: 586510656262557335}
+  Bomb:
+  - {fileID: 0}
   Buttons: {fileID: 0}
 --- !u!1 &1111902260349195206
 GameObject:
@@ -1417,6 +1419,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711597507037986883}
     m_Modifications:
+    - target: {fileID: 1153233675948866015, guid: c315b06f5d7bbee4b9a1a3b35999b7de, type: 3}
+      propertyPath: EnemyToInstantiate
+      value: 
+      objectReference: {fileID: 2043590613723429871, guid: e450e7074fc700e498d8b0e322739e8f, type: 3}
     - target: {fileID: 5304581629283540421, guid: c315b06f5d7bbee4b9a1a3b35999b7de, type: 3}
       propertyPath: m_Name
       value: bomb4
@@ -1532,6 +1538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: bomb3
       objectReference: {fileID: 0}
+    - target: {fileID: 6626261736107859113, guid: f5717bb9a6da787499c870248c071648, type: 3}
+      propertyPath: EnemyToInstantiate
+      value: 
+      objectReference: {fileID: 2043590613723429871, guid: b01bda4dc7ebd71479a0405d318ae6ae, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5717bb9a6da787499c870248c071648, type: 3}
 --- !u!1 &4103450678580531836 stripped
@@ -1618,6 +1628,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711597507037986883}
     m_Modifications:
+    - target: {fileID: 376997789411393895, guid: 9455d631943851745bf802e573387f0b, type: 3}
+      propertyPath: EnemyToInstantiate
+      value: 
+      objectReference: {fileID: 2043590613723429871, guid: 1c56d3a4e636345478eb65a9830a9063, type: 3}
     - target: {fileID: 4474358661519411503, guid: 9455d631943851745bf802e573387f0b, type: 3}
       propertyPath: m_SortingOrder
       value: 4

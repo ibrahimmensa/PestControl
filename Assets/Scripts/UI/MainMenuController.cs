@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
-    public GameObject MainMenu, StorePanel, SettingPanel, StartGamePanel;
+    public GameObject MainMenu, StorePanel, SettingPanel, StartGamePanel, LeaderBoardPanel, MultiplayerPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +26,24 @@ public class MainMenuController : MonoBehaviour
         DisableAllPanles();
         SettingPanel.SetActive(true);
     }
+    public void OpenLeaderBoard()
+    {
+        DisableAllPanles();
+        LeaderBoardPanel.SetActive(true);
+    }
+    public void OpenMultiplayer()
+    {
+        DisableAllPanles();
+        MultiplayerPanel.SetActive(true);
+    }
     public void DisableAllPanles()
     {
         MainMenu.SetActive(false);
         StorePanel.SetActive(false);
         SettingPanel.SetActive(false);
         StartGamePanel.SetActive(false);
+        MultiplayerPanel.SetActive(false);
+        LeaderBoardPanel.SetActive(false);
     }
     public void BackToMain()
     {
