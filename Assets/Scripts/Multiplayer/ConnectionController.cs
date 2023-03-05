@@ -23,6 +23,6 @@ public class ConnectionController : MonoBehaviourPunCallbacks
     }
     public override void OnConnectedToMaster()
     {
-        Debug.Log("OnConnectedToMaster() was called by PUN.");
+        //Debug.Log("OnConnectedToMaster() was called by PUN.");
     }
 }
