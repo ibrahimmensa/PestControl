@@ -1259,7 +1259,7 @@ MonoBehaviour:
   - {fileID: 5798395427178112380}
   - {fileID: 395729076892057335}
   - {fileID: 5012737241856228949}
-  AILevel: 7
+  AILevel: 1
   AimSpeed: 5
   Offset: 0
 --- !u!1 &6965343593595952367
