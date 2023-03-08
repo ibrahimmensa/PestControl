@@ -38721,7 +38721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32cc9a3e30de2c046bcec4b115f479c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
+  MoveSpeed: 1.5
   EnemyAnimator: {fileID: 2043590613723429776}
   AttackDistance: 0
   AttackDamage: 2
