@@ -27,7 +27,6 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Renderer>().material.renderQueue = 10000;
         //HealthBarMax = HealthBar.rectTransform.rect.width;
         if(gameObject.tag == "EnemyPest")
         {

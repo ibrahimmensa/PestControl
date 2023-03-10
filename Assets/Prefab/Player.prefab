@@ -1400,6 +1400,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6729551501294639763, guid: 927c257ca4d669a43b8b3859f4a6489b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729551502354794402, guid: 927c257ca4d669a43b8b3859f4a6489b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 927c257ca4d669a43b8b3859f4a6489b, type: 3}
 --- !u!4 &586510656262557332 stripped
@@ -1471,6 +1479,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6664597229058869981, guid: c315b06f5d7bbee4b9a1a3b35999b7de, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6664597230228051948, guid: c315b06f5d7bbee4b9a1a3b35999b7de, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c315b06f5d7bbee4b9a1a3b35999b7de, type: 3}
 --- !u!4 &7923945222342576628 stripped
@@ -1538,6 +1554,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: bomb3
       objectReference: {fileID: 0}
+    - target: {fileID: 2460481234503986575, guid: f5717bb9a6da787499c870248c071648, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460481235471773886, guid: f5717bb9a6da787499c870248c071648, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6626261736107859113, guid: f5717bb9a6da787499c870248c071648, type: 3}
       propertyPath: EnemyToInstantiate
       value: 
@@ -1561,6 +1585,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1711597507037986883}
     m_Modifications:
+    - target: {fileID: 1116354743984847744, guid: 58f0de76698d3a44e97f6a489fe5fbc8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1116354744971503281, guid: 58f0de76698d3a44e97f6a489fe5fbc8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8742619878621911744, guid: 58f0de76698d3a44e97f6a489fe5fbc8, type: 3}
       propertyPath: m_Name
       value: bomb5
